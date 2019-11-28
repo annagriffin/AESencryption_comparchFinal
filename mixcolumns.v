@@ -1,10 +1,11 @@
-module transformOneColumn
+
+
+module mixOneColumn
 (
   input[3:0][7:0] in,
   output[3:0][7:0] out
 
 );
-
 
 wire[3:0][7:0] shifted;
 assign shifted[0] = in[0] << 1;
@@ -21,15 +22,12 @@ assign isSignedc = in[2];
 wire signed[7:0] isSignedd;
 assign isSignedd = in[3];
 
-
 wire[3:0][7:0] highBit;
 
 assign highBit[0] = isSigneda >>> 7;
 assign highBit[1] = isSignedb >>> 7;
 assign highBit[2] = isSignedc >>> 7;
 assign highBit[3] = isSignedd >>> 7;
-
-
 
 wire[3:0][7:0] conditional;
 assign conditional[0] = highBit[0] & 8'h1b;
@@ -55,7 +53,7 @@ assign out[3] = mul2[0] ^ in[0] ^ mul2[3] ^ in[2] ^ in[1];
 endmodule
 
 
-module transformColumns
+module mixColumns
 (
   input[15:0][7:0] in,
   output[15:0][7:0] out
@@ -65,7 +63,5 @@ transformOneColumn col0(.out(out[3:0]), .in(in[3:0]));
 transformOneColumn col1(.out(out[7:4]), .in(in[7:4]));
 transformOneColumn col2(.out(out[8:11]), .in(in[8:11]));
 transformOneColumn col3(.out(out[12:15]), .in(in[12:15]));
-
-
 
 endmodule

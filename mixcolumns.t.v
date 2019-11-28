@@ -1,33 +1,16 @@
 `include "mixcolumns.v"
 
-// module test_mixOneColumn();
-//   reg [3:0][7:0]in;
-
-//   wire [3:0][7:0]out;
-
-//   transformOneColumn test (.out(out), .in(in));
-
-//   initial begin
-//   $display("Mix one column");
-
-
-//   in[0]=8'hdb; in[1]=8'h13; in[2]=8'h53; in[3]=8'h45;
-//   #1000
-//   $display("%h  %h  %h  %h", in[0], in[1], in[2], in[3]); #1000
-// //   $display("%h", [8'h04, 8'h66, 8'h81, 8'he5]);
-//   $display("%h  %h  %h  %h", out[0], out[1], out[2], out[3]);
-//   end
-//
 
 module test_mixColumns();
   reg[15:0][7:0]in;
   wire [15:0][7:0]out;
 
-  transformColumns test1(.out(out), .in(in));
+  mixColumns test1(.out(out), .in(in));
 
   initial begin
-  $display("Mix one column");
+  $display("Mix columns");
 
+  // NEED TO ADD IN EXPECTED VALUES TO PRINT STATMENTS
 
   in[0]=8'hd4; in[1]=8'hbf; in[2]=8'h5d; in[3]=8'h30;
   in[4]=8'he0; in[5]=8'hb4; in[6]=8'h52; in[7]=8'hae;
@@ -40,7 +23,6 @@ module test_mixColumns();
   $display("%h  %h  %h  %h", in[3], in[7], in[11], in[15]); #1000
 
   $display(); #1000
-//   $display("%h", [8'h04, 8'h66, 8'h81, 8'he5]);
   $display("%h  %h  %h  %h", out[0], out[4], out[8], out[12]); #1000
   $display("%h  %h  %h  %h", out[1], out[5], out[9], out[13]); #1000
   $display("%h  %h  %h  %h", out[2], out[6], out[10], out[14]); #1000
