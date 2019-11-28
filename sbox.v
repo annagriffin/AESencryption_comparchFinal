@@ -1,20 +1,20 @@
-// wire [15:0][7:0] state; 
+// wire [15:0][7:0] state;
 
 `timescale 1ns / 1ps
 
 module sbox
 (
-output[7:0] result,
+output reg[7:0] result,
 input[7:0] addr
 );
 
 // row
-reg[3:0] row;
-assign row = addr[0:3];
+wire[3:0] row;
+assign row = addr[3:0];
 
 // column
-reg[3:0] column;
-assign column = addr[4:7];
+wire[3:0] column;
+assign column = addr[7:4];
 
 always @(addr)
 case(row)
@@ -316,7 +316,6 @@ case(row)
 
   4'hf:
   case(column)
-  case(column)
     4'h0: result = 8'h8c;
     4'h1: result = 8'ha1;
     4'h2: result = 8'h89;
@@ -336,11 +335,5 @@ case(row)
   endcase
 
 endcase
-
-
-
-
-
-
 
 endmodule
