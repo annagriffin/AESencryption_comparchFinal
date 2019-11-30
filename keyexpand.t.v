@@ -1,35 +1,61 @@
 `include "keyexpand.v"
-`include "substitute.v"
-`include "sbox.v"
 
-module test_keyadd();
-  reg [15:0][7:0]state;
-  reg [15:0][7:0]key;
-  wire [15:0][7:0]newstate;
 
-  keyadd test (.state(state),.newstate(newstate),.key(key));
+module test_keyexpand();
+  reg[15:0][7:0] key;
+  reg[3:0] rc;
+  wire[15:0][7:0] keyout;
+
+  keyexpand test (.key(key), .rc(rc), .keyout(keyout));
 
   initial begin
-  $display("Shift Rows test");
-  state={8'b00111100,8'b00010000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000};
-  key={8'b00100100,8'b11111111, 8'b01111111, 8'b00111111, 8'b00011111, 8'b00001111, 8'b00000111, 8'b00000011, 8'b00000001, 8'b10101010, 8'b11010101, 8'b11101010, 8'b11110101, 8'b11111010, 8'b11111101, 8'b11111110}; #1000
-  $display("%b + %b = %b", state[15],key[15],newstate[15]);
-  $display("%b + %b = %b", state[14],key[14],newstate[14]);
-  $display("%b + %b = %b", state[13],key[13],newstate[13]);
-  $display("%b + %b = %b", state[12],key[12],newstate[12]);
-  $display("%b + %b = %b", state[11],key[11],newstate[11]);
-  $display("%b + %b = %b", state[10],key[10],newstate[10]);
-  $display("%b + %b = %b", state[9],key[9],newstate[9]);
-  $display("%b + %b = %b", state[8],key[8],newstate[8]);
-  $display("%b + %b = %b", state[7],key[7],newstate[7]);
-  $display("%b + %b = %b", state[6],key[6],newstate[6]);
-  $display("%b + %b = %b", state[5],key[5],newstate[5]);
-  $display("%b + %b = %b", state[4],key[4],newstate[4]);
-  $display("%b + %b = %b", state[3],key[3],newstate[3]);
-  $display("%b + %b = %b", state[2],key[2],newstate[2]);
-  $display("%b + %b = %b", state[1],key[1],newstate[1]);
-  $display("%b + %b = %b", state[0],key[0],newstate[0]);
+  $display("keyexpand");
+  rc=4'h0;
+  key[0]=8'h2b; key[1]=8'h7e; key[2]=8'h15; key[3]=8'h16;
+  key[4]=8'h28; key[5]=8'hae; key[6]=8'hd2; key[7]=8'ha6;
+  key[8]=8'hab; key[9]=8'hf7; key[10]=8'h15; key[11]=8'h88;
+  key[12]=8'h09; key[13]=8'hcf; key[14]=8'h4f; key[15]=8'h3c;
+
+
+  $display(); #1000
+  $display("%h  %h  %h  %h", key[0], key[4], key[8], key[12]); #1000
+  $display("%h  %h  %h  %h", key[1], key[5], key[9], key[13]); #1000
+  $display("%h  %h  %h  %h", key[2], key[6], key[10], key[14]); #1000
+  $display("%h  %h  %h  %h", key[3], key[7], key[11], key[15]); #1000
+
+  $display(); #1000
+
+  $display(); #1000
+  $display("%h  %h  %h  %h", keyout[0], keyout[4], keyout[8], keyout[12]); #1000
+  $display("%h  %h  %h  %h", keyout[1], keyout[5], keyout[9], keyout[13]); #1000
+  $display("%h  %h  %h  %h", keyout[2], keyout[6], keyout[10], keyout[14]); #1000
+  $display("%h  %h  %h  %h", keyout[3], keyout[7], keyout[11], keyout[15]);
+
+
+
+
+
   end
+  // $display("Shift Rows test");
+  // state={8'b00111100,8'b00010000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000};
+  // key={8'b00100100,8'b11111111, 8'b01111111, 8'b00111111, 8'b00011111, 8'b00001111, 8'b00000111, 8'b00000011, 8'b00000001, 8'b10101010, 8'b11010101, 8'b11101010, 8'b11110101, 8'b11111010, 8'b11111101, 8'b11111110}; #1000
+  // $display("%b + %b = %b", state[15],key[15],newstate[15]);
+  // $display("%b + %b = %b", state[14],key[14],newstate[14]);
+  // $display("%b + %b = %b", state[13],key[13],newstate[13]);
+  // $display("%b + %b = %b", state[12],key[12],newstate[12]);
+  // $display("%b + %b = %b", state[11],key[11],newstate[11]);
+  // $display("%b + %b = %b", state[10],key[10],newstate[10]);
+  // $display("%b + %b = %b", state[9],key[9],newstate[9]);
+  // $display("%b + %b = %b", state[8],key[8],newstate[8]);
+  // $display("%b + %b = %b", state[7],key[7],newstate[7]);
+  // $display("%b + %b = %b", state[6],key[6],newstate[6]);
+  // $display("%b + %b = %b", state[5],key[5],newstate[5]);
+  // $display("%b + %b = %b", state[4],key[4],newstate[4]);
+  // $display("%b + %b = %b", state[3],key[3],newstate[3]);
+  // $display("%b + %b = %b", state[2],key[2],newstate[2]);
+  // $display("%b + %b = %b", state[1],key[1],newstate[1]);
+  // $display("%b + %b = %b", state[0],key[0],newstate[0]);
+
 endmodule
 
 //00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 == 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00

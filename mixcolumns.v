@@ -1,5 +1,4 @@
 
-
 module mixOneColumn
 (
   input[3:0][7:0] in,
@@ -59,9 +58,9 @@ module mixColumns
   output[15:0][7:0] out
 );
 
-transformOneColumn col0(.out(out[3:0]), .in(in[3:0]));
-transformOneColumn col1(.out(out[7:4]), .in(in[7:4]));
-transformOneColumn col2(.out(out[8:11]), .in(in[8:11]));
-transformOneColumn col3(.out(out[12:15]), .in(in[12:15]));
+mixOneColumn col0(.out(out[3:0]), .in(in[3:0]));
+mixOneColumn col1(.out(out[7:4]), .in(in[7:4]));
+mixOneColumn col2(.out(out[8:11]), .in(in[8:11]));
+mixOneColumn col3(.out(out[12:15]), .in(in[12:15]));
 
 endmodule

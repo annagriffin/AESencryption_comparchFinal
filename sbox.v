@@ -5,16 +5,18 @@
 module sbox
 (
 output reg[7:0] result,
-input[7:0] addr
+input[7:0] addr,
+output[3:0] row,
+output[3:0] column
 );
-
-// row
-wire[3:0] row;
-assign row = addr[3:0];
 
 // column
 wire[3:0] column;
-assign column = addr[7:4];
+assign column = addr[3:0];
+
+// row
+wire[3:0] row;
+assign row = addr[7:4];
 
 always @(addr)
 case(row)
@@ -311,7 +313,7 @@ case(row)
     4'hc: result = 8'hce;
     4'hd: result = 8'h55;
     4'he: result = 8'h28;
-    4'hf: result = 8'h16;
+    4'hf: result = 8'hdf;
   endcase
 
   4'hf:
