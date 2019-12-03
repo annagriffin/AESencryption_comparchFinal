@@ -11,25 +11,25 @@ module test_keyexpand();
   initial begin
   $display("keyexpand");
   rc=4'h0;
-  key[0]=8'h2b; key[1]=8'h7e; key[2]=8'h15; key[3]=8'h16;
-  key[4]=8'h28; key[5]=8'hae; key[6]=8'hd2; key[7]=8'ha6;
-  key[8]=8'hab; key[9]=8'hf7; key[10]=8'h15; key[11]=8'h88;
-  key[12]=8'h09; key[13]=8'hcf; key[14]=8'h4f; key[15]=8'h3c;
+  key[0]=8'h3c; key[1]=8'h88; key[2]=8'ha6; key[3]=8'h16;
+  key[4]=8'h4f; key[5]=8'h15; key[6]=8'hd2; key[7]=8'h15;
+  key[8]=8'hcf; key[9]=8'hf7; key[10]=8'hae; key[11]=8'h7e;
+  key[12]=8'h09; key[13]=8'hab; key[14]=8'h28; key[15]=8'h2b;
 
 
   $display(); #1000
-  $display("%h  %h  %h  %h", key[0], key[4], key[8], key[12]); #1000
-  $display("%h  %h  %h  %h", key[1], key[5], key[9], key[13]); #1000
-  $display("%h  %h  %h  %h", key[2], key[6], key[10], key[14]); #1000
-  $display("%h  %h  %h  %h", key[3], key[7], key[11], key[15]); #1000
+  $display("%h  %h  %h  %h", key[15], key[14], key[13], key[12]); #1000
+  $display("%h  %h  %h  %h", key[11], key[10], key[9], key[8]); #1000
+  $display("%h  %h  %h  %h", key[7], key[6], key[5], key[4]); #1000
+  $display("%h  %h  %h  %h", key[3], key[2], key[1], key[0]); #1000
 
   $display(); #1000
 
   $display(); #1000
-  $display("%h  %h  %h  %h", keyout[0], keyout[4], keyout[8], keyout[12]); #1000
-  $display("%h  %h  %h  %h", keyout[1], keyout[5], keyout[9], keyout[13]); #1000
-  $display("%h  %h  %h  %h", keyout[2], keyout[6], keyout[10], keyout[14]); #1000
-  $display("%h  %h  %h  %h", keyout[3], keyout[7], keyout[11], keyout[15]);
+  $display("%h  %h  %h  %h", keyout[15], keyout[14], keyout[13], keyout[12]); #1000
+  $display("%h  %h  %h  %h", keyout[11], keyout[10], keyout[9], keyout[8]); #1000
+  $display("%h  %h  %h  %h", keyout[7], keyout[6], keyout[5], keyout[4]); #1000
+  $display("%h  %h  %h  %h", keyout[3], keyout[2], keyout[1], keyout[0]);
 
 
 
