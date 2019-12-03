@@ -17,10 +17,10 @@ wire [15:0][7:0] sub_out,shift_out,mix_out;
 
 
 keyexpand test (.key(key), .rc(rc), .keyout(keyout));
-substitute sub(.state(state),.newstate(sub_out);
-shiftrows shft (.state(ssub_out),.newstate(shift_out));
+substitute sub(.state(data),.newstate(sub_out));
+shiftrows shft (.state(sub_out),.newstate(shift_out));
 mixColumns test1(.out(mix_out), .in(shift_out));
+keyadd test2 (.state(mix_out),.newstate(r_out),.key(keyout));
+//assign r_out=keyout^mix_out;
 
-assign r_out=keyout^mix_out;
-
-end module
+endmodule

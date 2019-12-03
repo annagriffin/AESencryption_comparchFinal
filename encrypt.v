@@ -11,7 +11,7 @@ input [15:0][7:0] state;
 input [15:0][7:0] key;
 output [15:0][7:0] out;
 
-wire [15:0][7:0] r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,k1,k2,k3,k4,k5,k6,k7,k8,shftrw,subst,keyout;
+wire [15:0][7:0] r0,r1,r2,r3,r4,r5,r6,r7,r8,r9,k0,k1,k2,k3,k4,k5,k6,k7,k8,shftrw,subst,keyout;
 
 //not sure how we get the round keys to start? His seem to just appear...
 assign r0=state^key;
@@ -28,10 +28,10 @@ round nine(.clk(clk),.key(k7),.keyout(k8),.r_out(r9),.data(r8),.rc());
 //last weird round
 //r9 goes in here somewhere
 keyexpand test (.key(k8), .rc(rc), .keyout(keyout));
-substitute sub(.state(r9),.newstate(subst);
+substitute sub(.state(r9),.newstate(subst));
 shiftrows shft (.state(subst),.newstate(shftrw));
-assign out=keyout^shftrw;
-
+//assign out=keyout^shftrw;
+keyadd test2 (.state(shiftrw),.newstate(out),.key(keyout));
 
 
 endmodule
