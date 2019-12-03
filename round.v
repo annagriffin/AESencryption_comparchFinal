@@ -4,6 +4,7 @@
 `include "shiftrows.v"
 `include "substitute.v"
 `include "sbox.v"
+`include "keyadd.v"
 
 module round(clk,key,keyout,r_out, data,rc);
 input clk;

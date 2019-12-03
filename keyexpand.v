@@ -1,18 +1,16 @@
-`include "substitute.v"
-
 module keyexpand(
     input [15:0][7:0] key,
     input [3:0] rc,
     output [15:0][7:0] keyout
-
 );
 
     wire [3:0][7:0] col0, col1, col2, col3;
 
-    assign col0 = key[3:0];
-    assign col1 = key[7:4];
-    assign col2 = key[11:8];
-    assign col3 = key[15:12];
+
+    assign col0 = {key[3], key[7], key[11], key[15]};
+    assign col1 = {key[2], key[6], key[10], key[14]};
+    assign col2 = {key[1], key[5], key[9], key[13]};
+    assign col3 = {key[0], key[4], key[8], key[12]};
 
     wire[3:0][7:0] newVals;
     assign newVals[0] = col3[1];
@@ -20,11 +18,6 @@ module keyexpand(
     assign newVals[2] = col3[3];
     assign newVals[3] = col3[0];
 
-    wire[3:0][7:0] rr;
-    assign rr[0] = 8'h1;
-    assign rr[1] = 8'h0;
-    assign rr[2] = 8'h0;
-    assign rr[3] = 8'h0;
     // substitute la
     wire[3:0][7:0] subVals;
     substituteOneColumn sub0(.state(newVals), .newstate(subVals));
@@ -35,7 +28,29 @@ module keyexpand(
     assign testResult2 = testResult1 ^ col2;
     assign testResult3 = testResult2 ^ col3;
 
-    assign keyout = {testResult3, testResult2, testResult1, testResult0};
+    // col0
+    assign keyout[15] = testResult0[0];
+    assign keyout[11] = testResult0[1];
+    assign keyout[7] =  testResult0[2];
+    assign keyout[3] =  testResult0[3];
+
+    // col1
+    assign keyout[14] = testResult1[0];
+    assign keyout[10] = testResult1[1];
+    assign keyout[6] =  testResult1[2];
+    assign keyout[2] =  testResult1[3];
+
+    // col2
+    assign keyout[13] = testResult2[0];
+    assign keyout[9] =  testResult2[1];
+    assign keyout[5] =  testResult2[2];
+    assign keyout[1] =  testResult2[3];
+
+    // col3
+    assign keyout[12] = testResult3[0];
+    assign keyout[8] =  testResult3[1];
+    assign keyout[4] =  testResult3[2];
+    assign keyout[0] =  testResult3[3];
 
 
     function [31:0]rcon;

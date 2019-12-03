@@ -1,5 +1,3 @@
-// wire [15:0][7:0] state;
-
 `timescale 1ns / 1ps
 
 module sbox
@@ -33,7 +31,7 @@ case(row)
       4'h8: result = 8'h30;
       4'h9: result = 8'h01;
       4'ha: result = 8'h67;
-      4'hb: result = 8'h28;
+      4'hb: result = 8'h2b;
       4'hc: result = 8'hfe;
       4'hd: result = 8'hd7;
       4'he: result = 8'hab;
@@ -151,7 +149,7 @@ case(row)
     4'ha: result = 8'h02;
     4'hb: result = 8'h7f;
     4'hc: result = 8'h50;
-    4'hd: result = 8'hc3;
+    4'hd: result = 8'h3c;
     4'he: result = 8'h9f;
     4'hf: result = 8'ha8;
   endcase
