@@ -1,5 +1,5 @@
 `timescale 1 ns / 1 ps
-module keyadd(state,key,newstate);
+module invkeyadd(state,key,newstate);
     input [15:0][7:0] state;
     input [15:0][7:0] key;
     output [15:0][7:0] newstate;
