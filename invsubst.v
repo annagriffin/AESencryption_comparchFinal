@@ -1,5 +1,5 @@
 `timescale 1 ns / 1 ps
-
+// `include "invsbox.v"
 module inv_substitute
 (
     output [15:0][7:0] newstate,
@@ -31,4 +31,16 @@ module inv_substitute
     inv_sbox d3(.result(newstate[0]), .addr(state[0]));
 
     // assign newstate = newstate;
+endmodule
+module invsubstituteOneColumn
+(
+    output [3:0][7:0] newstate,
+    input [3:0][7:0] state
+);
+
+    inv_sbox d0(.result(newstate[3]), .addr(state[3]));
+    inv_sbox d1(.result(newstate[2]), .addr(state[2]));
+    inv_sbox d2(.result(newstate[1]), .addr(state[1]));
+    inv_sbox d3(.result(newstate[0]), .addr(state[0]));
+
 endmodule

@@ -1,3 +1,5 @@
+`include "substitute.v"
+
 module keyexpand(
     input [15:0][7:0] key,
     input [3:0] rc,

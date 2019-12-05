@@ -310,7 +310,7 @@ case(row)
     4'hb: result = 8'h3c;
     4'hc: result = 8'h83;
     4'hd: result = 8'h53;
-    4'he: result = 8'h99;s
+    4'he: result = 8'h99;
     4'hf: result = 8'h61;
   endcase
 
