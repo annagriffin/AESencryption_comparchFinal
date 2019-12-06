@@ -1,5 +1,5 @@
-`include "invsubst.v"
-`include "invsbox.v"
+// `include "invsubst.v"
+// `include "invsbox.v"
 module invkeyexpand(
     input [15:0][7:0] key,
     input [3:0] rc,
