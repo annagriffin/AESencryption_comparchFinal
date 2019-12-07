@@ -20,15 +20,15 @@ module test_decrypt();
   state[8]=8'h6a; state[9]=8'h11; state[10]=8'hdc; state[11]=8'h25;
   state[12]=8'h19; state[13]=8'hdc; state[14]=8'h02; state[15]=8'h39;
 
-  key[0]=8'ha6; key[1]=8'hc8; key[2]=8'h89; key[3]=8'ha8;
-  key[4]=8'h0c; key[5]=8'h0c; key[6]=8'h25; key[7]=8'hf9;
-  key[8]=8'h63; key[9]=8'h3f; key[10]=8'hee; key[11]=8'h14;
-  key[12]=8'hb6; key[13]=8'he1; key[14]=8'hc9; key[15]=8'd0;
+  // key[0]=8'ha6; key[1]=8'hc8; key[2]=8'h89; key[3]=8'ha8;
+  // key[4]=8'h0c; key[5]=8'h0c; key[6]=8'h25; key[7]=8'hf9;
+  // key[8]=8'h63; key[9]=8'h3f; key[10]=8'hee; key[11]=8'h14;
+  // key[12]=8'hb6; key[13]=8'he1; key[14]=8'hc9; key[15]=8'd0;
 
-  // key[0]=8'h3c; key[1]=8'h88; key[2]=8'ha6; key[3]=8'h16;
-  // key[4]=8'h4f; key[5]=8'h15; key[6]=8'hd2; key[7]=8'h15;
-  // key[8]=8'hcf; key[9]=8'hf7; key[10]=8'hae; key[11]=8'h7e;
-  // key[12]=8'h09; key[13]=8'hab; key[14]=8'h28; key[15]=8'h2b;
+  key[0]=8'h3c; key[1]=8'h88; key[2]=8'ha6; key[3]=8'h16;
+  key[4]=8'h4f; key[5]=8'h15; key[6]=8'hd2; key[7]=8'h15;
+  key[8]=8'hcf; key[9]=8'hf7; key[10]=8'hae; key[11]=8'h7e;
+  key[12]=8'h09; key[13]=8'hab; key[14]=8'h28; key[15]=8'h2b;
 
   $display("%h  %h  %h  %h", state[15], state[14], state[13], state[12]); #1000
   $display("%h  %h  %h  %h", state[11], state[10], state[9], state[8]); #1000

@@ -27,25 +27,23 @@ assign k7=wholekeyout[127:112];
 assign k8=wholekeyout[143:128];
 assign k9 =wholekeyout[159:144];
 
-assign r0=state^k9;
+
+assign shftrw = state^k9; // add key step
+invshiftrows shft (.state(shftrw),.newstate(subst));
+inv_substitute sub(.state(subst),.newstate(r9));
 
 
+invround one(.clk(clk),.key(k8),.r_out(r8),.data(r9),.rc(4'h9));
+invround two(.clk(clk),.key(k7),.r_out(r7),.data(r8),.rc(4'h8));
+invround three(.clk(clk),.key(k6),.r_out(r6),.data(r7),.rc(4'h7));
+invround four(.clk(clk),.key(k5),.r_out(r5),.data(r6),.rc(4'h6));
+invround five(.clk(clk),.key(k4),.r_out(r4),.data(r5),.rc(4'h5));
+invround six(.clk(clk),.key(k3),.r_out(r3),.data(r4),.rc(4'h4));
+invround seven(.clk(clk),.key(k2),.r_out(r2),.data(r3),.rc(4'h3));
+invround eight(.clk(clk),.key(k1),.r_out(r1),.data(r2),.rc(4'h2));
+invround nine(.clk(clk),.key(k0),.r_out(r0),.data(r1),.rc(4'h1));
 
-invround one(.clk(clk),.key(k8),.r_out(r1),.data(r0),.rc(4'h9));
-invround two(.clk(clk),.key(k7),.r_out(r2),.data(r1),.rc(4'h8));
-invround three(.clk(clk),.key(k6),.r_out(r3),.data(r2),.rc(4'h7));
-invround four(.clk(clk),.key(k5),.r_out(r4),.data(r3),.rc(4'h6));
-invround five(.clk(clk),.key(k4),.r_out(r5),.data(r4),.rc(4'h5));
-invround six(.clk(clk),.key(k3),.r_out(r6),.data(r5),.rc(4'h4));
-invround seven(.clk(clk),.key(k2),.r_out(r7),.data(r6),.rc(4'h3));
-invround eight(.clk(clk),.key(k1),.r_out(r8),.data(r7),.rc(4'h2));
-invround nine(.clk(clk),.key(k0),.r_out(r9),.data(r8),.rc(4'h1));
-
-inv_substitute sub(.state(r9),.newstate(subst));
-invshiftrows shft (.state(subst),.newstate(shftrw));
-invkeyadd test2 (.state(shftrw),.newstate(out), .key(k9));
-
-
+assign out = r0^key;
 
 
 endmodule
