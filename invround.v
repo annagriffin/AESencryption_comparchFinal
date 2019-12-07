@@ -6,9 +6,8 @@
 `include "invsbox.v"
 `include "invkeyadd.v"
 
-module invround(clk,key,r_out, data,rc);
+module invround(clk,key,r_out, data);
 input clk;
-input [3:0]rc;
 input [15:0][7:0] key;
 input [15:0][7:0] data;
 output [15:0][7:0] r_out;
