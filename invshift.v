@@ -1,7 +1,9 @@
+//AES decryption module-- invshiftRows()
 module invshiftrows(state,newstate);
   input [15:0][7:0] state;
   output [15:0][7:0] newstate;
 
+//Shift rows same as in shiftrows.v, but in opposite direction (now left to right)
 //Shfiting some rows!
 //row 1 has no change
 assign newstate[15][7:0]=state[15][7:0];

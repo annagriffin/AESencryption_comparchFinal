@@ -1,3 +1,4 @@
+//AES invsubst module just calls inverse s box, uses as look up table to substitute
 `timescale 1 ns / 1 ps
 // `include "invsbox.v"
 module inv_substitute
@@ -32,6 +33,8 @@ module inv_substitute
 
     // assign newstate = newstate;
 endmodule
+
+//substitute just one column, for key expand
 module invsubstituteOneColumn
 (
     output [3:0][7:0] newstate,

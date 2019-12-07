@@ -1,3 +1,4 @@
+//Look up table "SBox" for AES Encryption, to be used in substitute.v
 `timescale 1ns / 1ps
 
 module sbox
@@ -15,7 +16,7 @@ assign column = addr[3:0];
 // row
 wire[3:0] row;
 assign row = addr[7:4];
-
+//Input look up table row by row
 always @(addr)
 case(row)
   4'h0:

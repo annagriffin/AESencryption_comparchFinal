@@ -1,8 +1,10 @@
+//Shift Rows module for AES encryption
 module shiftrows(state,newstate);
   input [15:0][7:0] state;
   output [15:0][7:0] newstate;
 
 //Shfiting some rows!
+
 //row 1 has no change
 assign newstate[15][7:0]=state[15][7:0];
 assign newstate[14][7:0]=state[14][7:0];

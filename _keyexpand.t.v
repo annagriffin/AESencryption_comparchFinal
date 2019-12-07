@@ -1,3 +1,4 @@
+//testbench for _keyexpand.v, which solves for all the round keys used in encryption
 `include "_keyexpand.v"
 
 
@@ -9,7 +10,7 @@ module test_wholekeyexpand();
 
 
   wholekeyexpand test1(.out(out), .clk(clk), .state(state), .key(key));
-
+//print all of the round keys used in encryption, so that we can use them to decrypt
   initial begin
   state[0]=8'h34; state[1]=8'ha2; state[2]=8'h8d; state[3]=8'ha8;
   state[4]=8'h07; state[5]=8'h98; state[6]=8'h30; state[7]=8'hf6;

@@ -1,37 +1,4 @@
-// `include "invmixcol.v"
-
-
-// module test_invMixOneColumn();
-//   reg [3:0][7:0]in;
-
-//   wire [3:0][7:0]out;
-
-//   invMixOneColumn test (.out(out), .in(in));
-
-//   initial begin
-//   $display("Inverse Mix one column");
-
-//   // NEED TO ADD IN EXPECTED VALUES TO PRINT STATMENTS
-
-
-//   in[0]=8'hdb; in[1]=8'h13; in[2]=8'h53; in[3]=8'h45;
-//   #1000
-//   $display("%h  %h  %h  %h", in[0], in[1], in[2], in[3]); #1000
-//   $display("%h  %h  %h  %h", out[0], out[1], out[2], out[3]); #1000
-
-//   $display(); #1000
-//   in[0]=8'hd4; in[1]=8'hbf; in[2]=8'h5d; in[3]=8'h30;
-//   #1000
-//   $display("%h  %h  %h  %h", in[0], in[1], in[2], in[3]); #1000
-//   $display("%h  %h  %h  %h | %h  %h  %h  %h", out[0], out[1], out[2], out[3], 8'h04, 8'h66, 8'h81, 8'he5);
-//   end
-
-// endmodule
-
-
-
-
-
+//test bench for invmix colums
 `include "invmixcol.v"
 
 
@@ -44,7 +11,7 @@ module test_invMixColumns();
   initial begin
   $display("Inverse Mix columns");
 
-  // NEED TO ADD IN EXPECTED VALUES TO PRINT STATMENTS
+  // set input
 
   in[0]=8'h4c; in[1]=8'h7a; in[2]=8'h9a; in[3]=8'he5;
   in[4]=8'h26; in[5]=8'hd3; in[6]=8'h19; in[7]=8'h81;
@@ -55,7 +22,7 @@ module test_invMixColumns();
   $display("%h  %h  %h  %h", in[11], in[10], in[9], in[8]); #1000
   $display("%h  %h  %h  %h", in[7], in[6], in[5], in[4]); #1000
   $display("%h  %h  %h  %h", in[3], in[2], in[1], in[0]); #1000
-
+//print mixed columns
   $display(); #1000
   $display("%h  %h  %h  %h", out[15], out[14], out[13], out[12]); #1000
   $display("%h  %h  %h  %h", out[11], out[10], out[9], out[8]); #1000
@@ -65,5 +32,3 @@ module test_invMixColumns();
   end
 
 endmodule
-
-

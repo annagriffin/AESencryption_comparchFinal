@@ -1,3 +1,4 @@
+//AES Inverse Sbox look up table, to be used in invsubst.v
 `timescale 1ns / 1ps
 
 module inv_sbox
@@ -15,7 +16,7 @@ assign column = addr[3:0];
 // row
 wire[3:0] row;
 assign row = addr[7:4];
-
+//instantiate table row by row
 always @(addr)
 case(row)
   4'h0:

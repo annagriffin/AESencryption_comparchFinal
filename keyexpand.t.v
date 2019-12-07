@@ -1,3 +1,4 @@
+//testbench for key expand
 `include "keyexpand.v"
 
 
@@ -16,7 +17,7 @@ module test_keyexpand();
   key[8]=8'hcf; key[9]=8'hf7; key[10]=8'hae; key[11]=8'h7e;
   key[12]=8'h09; key[13]=8'hab; key[14]=8'h28; key[15]=8'h2b;
 
-
+//print initial key
   $display(); #1000
   $display("%h  %h  %h  %h", key[15], key[14], key[13], key[12]); #1000
   $display("%h  %h  %h  %h", key[11], key[10], key[9], key[8]); #1000
@@ -24,7 +25,7 @@ module test_keyexpand();
   $display("%h  %h  %h  %h", key[3], key[2], key[1], key[0]); #1000
 
   $display(); #1000
-
+//print expanded key
   $display(); #1000
   $display("%h  %h  %h  %h", keyout[15], keyout[14], keyout[13], keyout[12]); #1000
   $display("%h  %h  %h  %h", keyout[11], keyout[10], keyout[9], keyout[8]); #1000

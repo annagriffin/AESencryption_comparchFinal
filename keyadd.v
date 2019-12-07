@@ -1,3 +1,4 @@
+//AES AddKey module, XOR bit by bit within each byte
 `timescale 1 ns / 1 ps
 module keyadd(state,key,newstate);
     input [15:0][7:0] state;

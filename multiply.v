@@ -1,4 +1,4 @@
-
+//multiply.v holds all of the multiplication modules needed for keyexpand.v
 module multiply2 (
   input[3:0][7:0] in,
   output[3:0][7:0] product
@@ -124,5 +124,3 @@ assign mul7 = mul6 ^ in;
 multiply2 x14(.product(product), .in(mul7));
 
 endmodule
-
-

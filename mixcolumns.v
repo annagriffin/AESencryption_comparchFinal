@@ -1,3 +1,4 @@
+//AES Mixcols module
 `include "multiply.v"
 
 module mixOneColumn
@@ -11,6 +12,7 @@ wire[3:0][7:0] mul2;
 
 multiply2 x2(.product(mul2), .in(in));
 
+//where ^ indicates XOR
 assign out[0] = in[2] ^ in[3] ^ mul2[0] ^ mul2[1] ^ in[1];
 assign out[1] = in[0] ^ in[3] ^ mul2[1] ^ mul2[2] ^ in[2];
 assign out[2] = in[0] ^ in[1] ^ mul2[2] ^ mul2[3] ^ in[3];
@@ -29,12 +31,13 @@ module mixColumns
 wire[3:0][7:0] col0, col1, col2, col3;
 wire[3:0][7:0] colOut0, colOut1, colOut2, colOut3;
 
+//make into column objects
 assign col0 = {in[3], in[7], in[11], in[15]};
 assign col1 = {in[2], in[6], in[10], in[14]};
 assign col2 = {in[1], in[5], in[9], in[13]};
 assign col3 = {in[0], in[4], in[8], in[12]};
 
-
+//mix each column one by one
 mixOneColumn column0(.out(colOut0), .in(col0));
 mixOneColumn column1(.out(colOut1), .in(col1));
 mixOneColumn column2(.out(colOut2), .in(col2));

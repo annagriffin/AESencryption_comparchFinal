@@ -1,4 +1,5 @@
-`include "encrypt.v"
+//testbench for encrypt.v`
+include "encrypt.v"
 
 
 module test_encrypt();
@@ -13,7 +14,7 @@ module test_encrypt();
   initial begin
   $display("Encrypt");
 
-  // NEED TO ADD IN EXPECTED VALUES TO PRINT STATMENTS
+  //initialize state and keys
 
   state[0]=8'h34; state[1]=8'ha2; state[2]=8'h8d; state[3]=8'ha8;
   state[4]=8'h07; state[5]=8'h98; state[6]=8'h30; state[7]=8'hf6;
@@ -30,6 +31,7 @@ module test_encrypt();
   $display("%h  %h  %h  %h", state[7], state[6], state[5], state[4]); #1000
   $display("%h  %h  %h  %h", state[3], state[2], state[1], state[0]); #1000
 
+//print encrypted message
   $display(); #1000
   $display("%h  %h  %h  %h | %h  %h  %h  %h", out[15], out[14], out[13], out[12], 8'h39, 8'h02, 8'hdc, 8'h19); #1000
   $display("%h  %h  %h  %h | %h  %h  %h  %h", out[11], out[10], out[9], out[8], 8'h25, 8'hdc, 8'h11, 8'h6a); #1000

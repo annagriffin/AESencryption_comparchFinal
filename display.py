@@ -1,4 +1,4 @@
-
+#Use this file to avoid having to type out a bunch of indicies for a test bench
 holder = []
 i = 0
 while i < 160:

@@ -1,3 +1,4 @@
+//AES key expand file
 `include "substitute.v"
 
 module keyexpand(
@@ -20,15 +21,19 @@ module keyexpand(
     assign newVals[2] = col3[3];
     assign newVals[3] = col3[0];
 
-    // substitute la
+    // substitute one column
     wire[3:0][7:0] subVals;
     substituteOneColumn sub0(.state(newVals), .newstate(subVals));
 
+
     wire[3:0][7:0] testResult0, testResult1, testResult2, testResult3;
+
+    //MixCols
     assign testResult0 = col0 ^ subVals ^ rcon(rc);
     assign testResult1 = testResult0 ^ col1;
     assign testResult2 = testResult1 ^ col2;
     assign testResult3 = testResult2 ^ col3;
+
 
     // col0
     assign keyout[15] = testResult0[0];
@@ -54,7 +59,7 @@ module keyexpand(
     assign keyout[4] =  testResult3[2];
     assign keyout[0] =  testResult3[3];
 
-
+//LUT of round keys
     function [31:0]rcon;
       input [3:0] rc;
       case(rc)

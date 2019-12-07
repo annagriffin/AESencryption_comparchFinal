@@ -1,3 +1,4 @@
+//substitution module for AES encryption
 `timescale 1 ns / 1 ps
 `include "sbox.v"
 
@@ -7,7 +8,7 @@ module substitute
     output [15:0][7:0] newstate,
     input [15:0][7:0] state
 );
-
+//Find byte value in sbox substitution value and replace the origional with the table value
     // substitute row 1 values
     sbox a0(.result(newstate[15]), .addr(state[15]));
     sbox a1(.result(newstate[14]), .addr(state[14]));
@@ -37,6 +38,7 @@ endmodule
 
 
 module substituteOneColumn
+//substitution for one column, to be used in key expand
 (
     output [3:0][7:0] newstate,
     input [3:0][7:0] state

@@ -1,3 +1,4 @@
+//AES Inverse key add file, identical to keyadd.v
 `timescale 1 ns / 1 ps
 module invkeyadd(state,key,newstate);
     input [15:0][7:0] state;

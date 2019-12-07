@@ -1,3 +1,4 @@
+//teatbench for mixcols
 `include "mixcolumns.v"
 
 
@@ -10,7 +11,7 @@ module test_mixColumns();
   initial begin
   $display("Mix columns");
 
-  // NEED TO ADD IN EXPECTED VALUES TO PRINT STATMENTS
+  // intialize state
 
   in[0]=8'he5; in[1]=8'hf1; in[2]=8'hae; in[3]=8'h30;
   in[4]=8'h98; in[5]=8'h11; in[6]=8'h52; in[7]=8'h5d;
@@ -21,7 +22,7 @@ module test_mixColumns();
   $display("%h  %h  %h  %h", in[11], in[10], in[9], in[8]); #1000
   $display("%h  %h  %h  %h", in[7], in[6], in[5], in[4]); #1000
   $display("%h  %h  %h  %h", in[3], in[2], in[1], in[0]); #1000
-
+//print mixed cols
   $display(); #1000
   $display("%h  %h  %h  %h", out[15], out[14], out[13], out[12]); #1000
   $display("%h  %h  %h  %h", out[11], out[10], out[9], out[8]); #1000
@@ -31,5 +32,3 @@ module test_mixColumns();
   end
 
 endmodule
-
-

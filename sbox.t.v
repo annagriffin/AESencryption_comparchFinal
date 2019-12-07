@@ -1,3 +1,4 @@
+//testbench for sbox module
 `include "sbox.v"
 
 module test_sbox();
@@ -7,7 +8,7 @@ module test_sbox();
 
 
   sbox test(.addr(addr), .result(result));
-
+//print table outputs at various values
   initial begin
     $display("sbox test"); #1000
     $display("Addr  Out  | Expected"); #1000

@@ -1,3 +1,4 @@
+//AES parent file to run decryption
 `include "invround.v"
 `include "_keyexpand.v"
 
@@ -13,7 +14,7 @@ module decrypt(
 wire [159:0][7:0] wholekeyout;
 
 wire [15:0][7:0] r0,r1,r2,r3,r4,r5,r6,r7,r8,k0,k1,k2,k3,k4,k5,k6,k7,k8,k9,shftrw,subst,addrw;
-
+//solve for all keys used in encryption
 wholekeyexpand wke(.key(key), .clk(clk), .state(state), .out(wholekeyout));
 
 assign  k0= wholekeyout[15:0];
@@ -27,12 +28,12 @@ assign k7=wholekeyout[127:112];
 assign k8=wholekeyout[143:128];
 assign k9 =wholekeyout[159:144];
 
-
+//inverse mini round
 assign addrw = state^k9; // add key step
 invshiftrows shft (.state(addrw),.newstate(shftrw));
 inv_substitute sub(.state(shftrw),.newstate(subst));
 
-
+//run ten inverse rounds
 invround one  (.clk(clk),.key(k8),.r_out(r8),.data(subst));
 invround two  (.clk(clk),.key(k7),.r_out(r7),.data(r8));
 invround three(.clk(clk),.key(k6),.r_out(r6),.data(r7));

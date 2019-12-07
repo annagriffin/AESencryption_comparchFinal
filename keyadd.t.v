@@ -1,3 +1,4 @@
+//tetbench for keyadd
 `include "keyadd.v"
 
 module test_keyadd();
@@ -9,8 +10,11 @@ module test_keyadd();
 
   initial begin
   $display("Shift Rows test");
+  //initialize inputs
   state={8'b00111100,8'b00010000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000, 8'b00000000};
+
   key={8'b00100100,8'b11111111, 8'b01111111, 8'b00111111, 8'b00011111, 8'b00001111, 8'b00000111, 8'b00000011, 8'b00000001, 8'b10101010, 8'b11010101, 8'b11101010, 8'b11110101, 8'b11111010, 8'b11111101, 8'b11111110}; #1000
+//print state, key and then value after additon (XOR-ing)
   $display("%b + %b = %b", state[15],key[15],newstate[15]);
   $display("%b + %b = %b", state[14],key[14],newstate[14]);
   $display("%b + %b = %b", state[13],key[13],newstate[13]);

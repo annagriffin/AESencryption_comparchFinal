@@ -1,4 +1,6 @@
+//AES mix columns file
 `include "multiply.v"
+//Mix only one column
 module invMixOneColumn
 (
   input[3:0][7:0] in,
@@ -7,13 +9,13 @@ module invMixOneColumn
 );
 
 wire[3:0][7:0] mul9, mul11, mul13, mul14;
-
+//call the necessary multiplication module
 multiply9   x9(.product(mul9),   .in(in));
 multiply11 x11(.product(mul11),  .in(in));
 multiply13 x13(.product(mul13),  .in(in));
 multiply14 x14(.product(mul14),  .in(in));
 
-
+//Assign to output, whenre ^ indicates XOR
 assign out[0] = mul14[0] ^ mul11[1] ^ mul13[2] ^  mul9[3];
 assign out[1] =  mul9[0]  ^ mul14[1] ^ mul11[2] ^ mul13[3];
 assign out[2] = mul13[0] ^ mul9[1]  ^ mul14[2] ^ mul11[3];
@@ -23,7 +25,7 @@ assign out[3] = mul11[0] ^ mul13[1] ^ mul9[2]  ^ mul14[3];
 endmodule
 
 
-
+//mix the whole state object by calling mixonecol on each of the four columns
 module invMixColumns
 (
   input[15:0][7:0] in,
@@ -44,6 +46,7 @@ invMixOneColumn column1(.out(colOut1), .in(col1));
 invMixOneColumn column2(.out(colOut2), .in(col2));
 invMixOneColumn column3(.out(colOut3), .in(col3));
 
+//assign mixed col values to out
 // col0
 assign out[15] = colOut0[0];
 assign out[11] = colOut0[1];

@@ -1,3 +1,4 @@
+//AES wholekeyexpand solves for all RoundKeys and saves in array out
 `include "keyexpand.v"
 
 module wholekeyexpand (
@@ -10,7 +11,7 @@ module wholekeyexpand (
 
 wire [15:0][7:0] k0,k1,k2,k3,k4,k5,k6,k7,k8,k9;
 
-
+//Run key expand for each round and save key in variable out
 keyexpand zero (.key(key), .rc(4'h0), .keyout(k0));
 assign out[15:0] = k0;
 keyexpand one (.key(k0), .rc(4'h1), .keyout(k1));
