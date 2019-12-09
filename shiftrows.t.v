@@ -21,7 +21,26 @@ module test_shiftrows();
   $display("%b %b %b %b",newstate[15], newstate[14], newstate[13], newstate[12]); #1000
   $display("%b %b %b %b",newstate[11], newstate[10], newstate[9], newstate[8]); #1000
   $display("%b %b %b %b",newstate[7], newstate[6], newstate[5], newstate[4]); #1000
-  $display("%b %b %b %b",newstate[3], newstate[2], newstate[1], newstate[0]);
+  $display("%b %b %b %b",newstate[3], newstate[2], newstate[1], newstate[0]); #1000
+
+  $display(); #1000
+  $display(); #1000
+
+  state[0]=8'h75; state[1]=8'hf5; state[2]=8'h9f; state[3]=8'h9f; #1000
+  state[4]=8'h9f; state[5]=8'hb7; state[6]=8'hb7; state[7]=8'hb7; #1000
+  state[8]=8'h4d; state[9]=8'hf5; state[10]=8'h92; state[11]=8'h33;  #1000
+  state[12]=8'h45; state[13]=8'ha8; state[14]=8'ha8; state[15]=8'h3b; #1000
+
+  $display("%h %h %h %h",state[15], state[14], state[13], state[12]); #1000
+  $display("%h %h %h %h",state[11], state[10], state[9], state[8]); #1000
+  $display("%h %h %h %h",state[7], state[6], state[5], state[4]); #1000
+  $display("%h %h %h %h",state[3], state[2], state[1], state[0]); #1000
+  $display("-----------------------------------------------"); #1000
+
+  $display("%h %h %h %h",newstate[15], newstate[14], newstate[13], newstate[12]); #1000
+  $display("%h %h %h %h",newstate[11], newstate[10], newstate[9], newstate[8]); #1000
+  $display("%h %h %h %h",newstate[7], newstate[6], newstate[5], newstate[4]); #1000
+  $display("%h %h %h %h",newstate[3], newstate[2], newstate[1], newstate[0]);
 
   end
 endmodule
