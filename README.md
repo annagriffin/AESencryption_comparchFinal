@@ -1,5 +1,5 @@
 # AESencryption_comparchFinal
-This is the final project for a COmputer Architecture course at Olin College. For information about how the algorithm works see:
+This is the final project for a Computer Architecture course at Olin College. For information about how the algorithm works see: https://sites.google.com/view/aes-encryption/home?authuser=0
 
 To use this code, download the repository and then run encrypt.v or decrypt.v (these are the parent files). To see print outs of the algorithm ciphertext and plain text, run encrypt.t.v or decrypt.t.v.
 Running any of these files can be done by typing the following line into command prompt: 
